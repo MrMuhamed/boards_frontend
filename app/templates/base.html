@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" >  
+
+    <style>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table thead {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .table th,
+        .table td {
+            border: none;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .table th {
+            text-align: left;
+        }
+        .board-title {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .board-name {
+            font-size: 20px;
+        }
+        .board-description {
+            color: #6c757d;
+        }
+        body {
+            margin: 0; /* Reset default margin */
+            padding: 0; /* Reset default padding */
+        }
+        .container {
+            margin-left: 20px; /* Move the blocks to the left */
+        }
+    </style>
+</head>
+<body>
+ 
+    
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block body %}
+    {% endblock body %}
+
+    <!-- JS here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script> 
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/gijgo.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  
+      
+</body>
+</html>

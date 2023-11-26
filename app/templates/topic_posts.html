@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ topic.subject }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="board-title">
+            <div class="board-name">
+                <a href="{% url 'boards:home' %}">Boards</a> /
+                <a href="{% url 'boards:board_topics' topic.board.id %}">{{ topic.board.name }}</a> /
+                {{ topic.subject }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block body %}
+    <div class="container">
+        <div class="mb-4">
+            <a href="{% url 'boards:reply_topic' topic.board.pk topic.pk %}" class="btn btn-primary">Replay</a>
+        </div>
+
+        <div class="row" >
+            <div class="col-12">
+                {% for post in topic.posts.all %}
+                    <div class="row" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px;">
+                        <div class="col-2">
+                            <img src="{% static 'img/user.png' %}" alt="{{ post.created_by.username }}" style="width: 70%;">
+                        </div>
+                        <div class="col-10">
+                            <p>{{ post.created_by.username }}</p>
+                            <p>{{ post.message }}</p>
+                            <p>{{ post.created_dt }}</p>
+                            {% if post.created_by == user %}
+                                <a href="{% url 'boards:edit_post' post.topic.board.pk post.topic.id post.pk %}" class="btn btn-primary">Edit</a>
+                            {% endif %}
+                        </div>
+                                                
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}

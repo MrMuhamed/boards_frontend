@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load bootstrap4 %}
+
+{% block title %}
+    Edit Post
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="board-title">
+            <div class="board-name"><a href="{% url 'boards:home' %}">Boards</a> / <a href="{% url 'boards:board_topics' post.topic.board.pk %}">{{ post.topic.board.name }}</a> / Edit Post</div>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <!-- {% include 'includes/form.html' %} -->
+            <div class="form-group">
+                <button type="submit" class="boxed-btn3 w-10"> Save Changes</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

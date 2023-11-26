@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Create New Topic
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="board-title">
+            <div class="board-name"><a href="{% url 'boards:home' %}">Boards</a> / <a href="{% url 'boards:board_topics' board.id %}">{{ board.name }}</a> / New Topic</div>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" id="subject" name="subject">
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+    </div>
+{% endblock %}

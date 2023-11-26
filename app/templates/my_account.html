@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+    My account
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="board-title">
+            <div class="board-name">My account</div>
+        </div>
+        <form method="POST" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="form-group">
+                <button type="submit" class="boxed-btn3 w-10">Save Changes</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Board
+{% endblock %}
+
+{% block content %}
+<div class="board-title">
+    <div class="board-name">Board</div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Board</th>
+            <th>Posts</th>
+            <th>Topics</th>
+            <th>Last Post</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for board in boards %}
+        <tr>
+            <td>
+                <div class="board-name"><a href="{% url 'boards:board_topics' board.id %}">{{board.name}}</a></div>
+                <div class="board-description">{{board.description}}</div>
+            </td>
+            <td>{{board.get_posts_count}}</td>
+            <td>{{board.topics.count}}</td>
+            <td>
+                {% with post=board.get_last_post %}
+                {% if post %}
+                by {{post.created_by.username}} at {{post.created_dt}}
+                {% else %}
+                <small>No Posts</small>
+                {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+        <tr style="height: 10px;"></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
